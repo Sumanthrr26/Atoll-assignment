@@ -1,0 +1,58 @@
+/*Encoding*/
+
+function encode(input) {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let result = "";
+
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i];
+    const index = letters.indexOf(char) + 1;
+
+    if (index % 2 === 1) {
+      const oppositeIndex = 27 - index;
+      result += letters[oppositeIndex - 1];
+    } else {
+      result += char + letters[26 - index];
+    }
+  }
+
+  return result;
+}
+
+// Test cases
+console.log(encode("ABC"));
+console.log(encode("XYZ"));
+console.log(encode("GHI"));
+console.log(encode("NOP"));
+console.log(encode("JKL"));
+console.log(encode("UTS"));
+
+
+/*Decoding */
+
+function decode(encoded) {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let result = "";
+
+  for (let i = 0; i < encoded.length; i++) {
+    const char = encoded[i];
+    const index = letters.indexOf(char) + 1;
+
+    if (index % 2 === 1) {
+      const oppositeIndex = 27 - index;
+      result += letters[oppositeIndex - 1];
+    } else {
+      result += letters[26 - index];
+    }
+  }
+
+  return result;
+}
+
+
+console.log(decode("ZBYX"));
+console.log(decode("XCBZA"));
+console.log(decode("THSR"));
+console.log(decode("NMLPK"));
+console.log(decode("JQPLO"));
+console.log(decode("FTGH"));
